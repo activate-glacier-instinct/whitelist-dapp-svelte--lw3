@@ -137,21 +137,21 @@
 	let uiJoinedWhitelist = false;
 	let uiLoading = false;
 
-	numberOfWhitelisted.subscribe(value => {
+	numberOfWhitelisted.subscribe((value) => {
 		uiNumberOfWhitelisted = value;
 	});
 
-	walletConnected.subscribe(value => {
-		uiWalletConnected = value
-	})
+	walletConnected.subscribe((value) => {
+		uiWalletConnected = value;
+	});
 
-	joinedWhitelist.subscribe(value => {
-		uiJoinedWhitelist = value
-	})
+	joinedWhitelist.subscribe((value) => {
+		uiJoinedWhitelist = value;
+	});
 
-	loading.subscribe(value => {
-		uiLoading = value
-	})
+	loading.subscribe((value) => {
+		uiLoading = value;
+	});
 
 	onMount(() => {
 		if (!uiWalletConnected) {
@@ -168,59 +168,29 @@
 </script>
 
 <div>
-	<head>
-		<title>Whitelist Dapp</title>
-		<meta name="description" content="Whitelist-Dapp" />
-		<link rel="icon" href="/favicon.ico" />
-	</head>
-	<div class="main">
-		<div>
-			<h1 class="title">Welcome to Crypto Devs!</h1>
-			<div class="description">Its an NFT collection for developers in Crypto.</div>
-			<div class="description">
-				{uiNumberOfWhitelisted} have already joined the Whitelist
-			</div>
-			<!-- {renderButton()} -->
-			{#if uiWalletConnected}
-				{#if uiJoinedWhitelist}
-					<div class="description">Thanks for joining the Whitelist!</div>
-				{:else if uiLoading}
-					<button class="button">Loading...</button>
-				{:else}
-					<button on:click={() => addAddressToWhitelist()} class="button">
-						Join the Whitelist
-					</button>
-				{/if}
-			{:else}
-				<button on:click={connectWallet} class="button"> Connect your wallet </button>
-			{/if}
-		</div>
-		<div>
-			<img class="image" src="./crypto-devs.svg" alt="decorative background image" />
-		</div>
+	<h1 class="title">Welcome to Crypto Devs!</h1>
+	<div class="description">Its an NFT collection for developers in Crypto.</div>
+	<div class="description">
+		{uiNumberOfWhitelisted} have already joined the Whitelist
 	</div>
-
-	<footer class="footer">Made with &#10084; by Crypto Devs</footer>
+	<!-- {renderButton()} -->
+	{#if uiWalletConnected}
+		{#if uiJoinedWhitelist}
+			<div class="description">Thanks for joining the Whitelist!</div>
+		{:else if uiLoading}
+			<button class="button">Loading...</button>
+		{:else}
+			<button on:click={() => addAddressToWhitelist()} class="button"> Join the Whitelist </button>
+		{/if}
+	{:else}
+		<button on:click={connectWallet} class="button"> Connect your wallet </button>
+	{/if}
+</div>
+<div>
+	<img class="image" src="./crypto-devs.svg" alt="decorative background image" />
 </div>
 
 <style>
-	.main {
-		min-height: 90vh;
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		font-family: 'Courier New', Courier, monospace;
-	}
-
-	.footer {
-		display: flex;
-		padding: 2rem 0;
-		border-top: 1px solid #eaeaea;
-		justify-content: center;
-		align-items: center;
-	}
-
 	.image {
 		width: 70%;
 		height: 50%;
@@ -248,13 +218,5 @@
 		width: 200px;
 		cursor: pointer;
 		margin-bottom: 2%;
-	}
-	@media (max-width: 1000px) {
-		.main {
-			width: 100%;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-		}
 	}
 </style>
