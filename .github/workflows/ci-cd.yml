@@ -24,7 +24,7 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - name: Install
-        run: npm install --no-save --legacy-peer-deps
+        run: npm ci --no-save --legacy-peer-deps
       - name: Build
         run: npm run build     
       - name: Deploy 

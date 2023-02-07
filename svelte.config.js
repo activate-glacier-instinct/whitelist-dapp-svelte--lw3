@@ -8,7 +8,9 @@ const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
 	preprocess: vitePreprocess(),
-
+	paths: {
+		base: dev ? '' : '/whitelist-dapp-svelte--lw3',
+	},
 	kit: {
 		adapter: adapter({
 			// default options are shown. On some platforms
@@ -22,9 +24,7 @@ const config = {
 			// For example, instead of '_app', use 'app_', 'internal', etc.
 			appDir: '_app',
 			prerender: { entries: ["*"] },
-			paths: {
-				base: dev ? '' : '/whitelist-dapp-svelte--lw3',
-			},
+
 		})
 	}
 };
